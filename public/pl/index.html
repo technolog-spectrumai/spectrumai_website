@@ -22,7 +22,25 @@
     <ul class="hidden md:flex space-x-6 text-sm font-medium">
       <li><a href="#about" :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">O nas</a></li>
       <li><a href="#ventures" :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">Inwestycje</a></li>
-      <li><a href="#contact" :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">Kontakt</a></li>
+        <li><a href="#contact" :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">Kontakt</a></li>
+        <li>
+          <a href="/en/"
+             :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">
+            🇬🇧
+          </a>
+        </li>
+        <li>
+          <a href="/pl/"
+             :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">
+            🇵🇱
+          </a>
+        </li>
+        <li>
+          <a href="/fr/"
+             :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">
+            🇫🇷
+          </a>
+        </li>
     </ul>
 
     <div class="flex items-center space-x-4">
@@ -39,8 +57,21 @@
     <a href="#about" :class="dark ? 'block text-gray-300 hover:text-cyan-400' : 'block text-gray-700 hover:text-indigo-600'">O nas</a>
     <a href="#ventures" :class="dark ? 'block text-gray-300 hover:text-cyan-400' : 'block text-gray-700 hover:text-indigo-600'">Inwestycje</a>
     <a href="#contact" :class="dark ? 'block text-gray-300 hover:text-cyan-400' : 'block text-gray-700 hover:text-indigo-600'">Kontakt</a>
+      <a href="/en/"
+         :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">
+        🇬🇧
+      </a>
+      <a href="/pl/"
+         :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">
+        🇵🇱
+      </a>
+      <a href="/fr/"
+         :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">
+        🇫🇷
+      </a>
   </div>
 </nav>
+
 
 <header :class="dark ? 'bg-black' : 'bg-white'" class="text-center py-24 px-6">
   <h1 :class="dark ? 'text-cyan-400' : 'text-indigo-500'" class="text-5xl font-bold">Spectrum AI</h1>
