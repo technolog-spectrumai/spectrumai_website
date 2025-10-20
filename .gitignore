@@ -1,0 +1,32 @@
+# Hugo build output
+/public/
+/resources/_gen/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.sw?
+
+# Node.js dependencies (if using npm for assets)
+node_modules/
+
+# Hugo environment files
+.env
+.env.*
+
+# Log files
+*.log
+
+# Backup files
+*~
+*.bak
+*.tmp
+
+# Hugo cache
+hugo_stats.json
+
+public/**
