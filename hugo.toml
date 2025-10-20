@@ -1,7 +1,7 @@
 baseURL = "https://example.com/"
 title = "Spectrum AI"
 defaultContentLanguage = "en"
-defaultContentLanguageInSubdir = true
+defaultContentLanguageInSubdir = false
 
 [languages]
 
