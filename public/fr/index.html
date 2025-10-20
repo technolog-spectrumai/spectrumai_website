@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" x-data="{ dark: true, open: false }" :class="dark ? 'dark' : 'light'">
+<html lang="fr" x-data="{ dark: true, open: false }" :class="dark ? 'dark' : 'light'">
 <head>
 	<meta name="generator" content="Hugo 0.151.1"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8" />
@@ -20,8 +20,8 @@
     <h1 :class="dark ? 'text-cyan-400' : 'text-indigo-500'" class="text-xl font-bold tracking-wide">Spectrum AI</h1>
 
     <ul class="hidden md:flex space-x-6 text-sm font-medium">
-      <li><a href="#about" :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">About</a></li>
-      <li><a href="#ventures" :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">Ventures</a></li>
+      <li><a href="#about" :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">À propos</a></li>
+      <li><a href="#ventures" :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">Projets</a></li>
       <li><a href="#contact" :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">Contact</a></li>
     </ul>
 
@@ -36,8 +36,8 @@
   </div>
 
   <div x-show="open" x-transition class="md:hidden mt-4 space-y-2">
-    <a href="#about" :class="dark ? 'block text-gray-300 hover:text-cyan-400' : 'block text-gray-700 hover:text-indigo-600'">About</a>
-    <a href="#ventures" :class="dark ? 'block text-gray-300 hover:text-cyan-400' : 'block text-gray-700 hover:text-indigo-600'">Ventures</a>
+    <a href="#about" :class="dark ? 'block text-gray-300 hover:text-cyan-400' : 'block text-gray-700 hover:text-indigo-600'">À propos</a>
+    <a href="#ventures" :class="dark ? 'block text-gray-300 hover:text-cyan-400' : 'block text-gray-700 hover:text-indigo-600'">Projets</a>
     <a href="#contact" :class="dark ? 'block text-gray-300 hover:text-cyan-400' : 'block text-gray-700 hover:text-indigo-600'">Contact</a>
   </div>
 </nav>
@@ -45,47 +45,47 @@
 <header :class="dark ? 'bg-black' : 'bg-white'" class="text-center py-24 px-6">
   <h1 :class="dark ? 'text-cyan-400' : 'text-indigo-500'" class="text-5xl font-bold">Spectrum AI</h1>
   <p :class="dark ? 'text-gray-400' : 'text-gray-700'" class="mt-6 text-lg italic max-w-xl mx-auto">
-    Engineering intelligence. Empowering possibility.<br>Investing in autonomy, infrastructure, and insight.
+    Ingénierie de l’intelligence. Libération du potentiel.<br>Investir dans l’autonomie, l’infrastructure et la connaissance.
   </p>
 </header>
 
 <section id="about" class="max-w-4xl mx-auto px-6 py-16">
-  <h2 :class="dark ? 'text-cyan-400 border-gray-700' : 'text-indigo-500 border-gray-300'" class="text-2xl font-bold border-b pb-2 mb-6 uppercase tracking-wide">About</h2>
-  <p class="text-base leading-relaxed">Spectrum AI is a private technology holding company with strategic investments in autonomous systems, decentralized infrastructure, and performance intelligence. We support founders building scalable, secure, and ethically grounded platforms that redefine how intelligence is deployed across industries.</p>
+  <h2 :class="dark ? 'text-cyan-400 border-gray-700' : 'text-indigo-500 border-gray-300'" class="text-2xl font-bold border-b pb-2 mb-6 uppercase tracking-wide">À propos</h2>
+  <p class="text-base leading-relaxed">Spectrum AI est une société privée de technologie qui investit stratégiquement dans les systèmes autonomes, l’infrastructure décentralisée et l’intelligence de performance. Nous soutenons les fondateurs qui construisent des plateformes évolutives, sécurisées et éthiquement solides, redéfinissant la manière dont l’intelligence est déployée dans les industries.</p>
 </section>
 
 <section id="ventures" class="max-w-5xl mx-auto px-6 py-16">
-  <h2 :class="dark ? 'text-cyan-400 border-gray-700' : 'text-indigo-500 border-gray-300'" class="text-2xl font-bold border-b pb-2 mb-6 uppercase tracking-wide">Ventures</h2>
+  <h2 :class="dark ? 'text-cyan-400 border-gray-700' : 'text-indigo-500 border-gray-300'" class="text-2xl font-bold border-b pb-2 mb-6 uppercase tracking-wide">Projets</h2>
 
   <div class="space-y-12">
     <div :class="dark ? 'bg-gray-900 border-cyan-400' : 'bg-white border-indigo-300'" class="rounded-lg shadow-md p-6 border-l-4">
       <h3 class="text-xl font-semibold mb-2">Basilisk Systems</h3>
       <iframe src="https://basilisk-systems.netlify.app/" class="w-full h-96 mb-4" loading="lazy" scrolling="no"></iframe>
-      <p class="text-sm">Autonomous drone transport built on vision, security, and relentless innovation—from defense-ready platforms to cloud-integrated navigation.</p>
-      <a href="https://basilisk-systems.netlify.app/" target="_blank" :class="dark ? 'text-cyan-400' : 'text-indigo-500'" class="inline-block mt-2 hover:underline">Visit Website →</a>
+      <p class="text-sm">Transport autonome par drone basé sur la vision, la sécurité et une innovation constante — des plateformes prêtes pour la défense à la navigation intégrée au cloud.</p>
+      <a href="https://basilisk-systems.netlify.app/" target="_blank" :class="dark ? 'text-cyan-400' : 'text-indigo-500'" class="inline-block mt-2 hover:underline">Visiter le site →</a>
     </div>
 
     <div :class="dark ? 'bg-gray-900 border-cyan-400' : 'bg-white border-indigo-300'" class="rounded-lg shadow-md p-6 border-l-4">
       <h3 class="text-xl font-semibold mb-2">Sport Spectrum</h3>
       <iframe src="https://spontaneous-swan-18b446.netlify.app/" class="w-full h-96 mb-4" loading="lazy" scrolling="no"></iframe>
-      <p class="text-sm">Cutting-edge analytics for volleyball and high-performance teams. Precision. Power. Insight.</p>
-      <a href="https://spontaneous-swan-18b446.netlify.app/" target="_blank" :class="dark ? 'text-cyan-400' : 'text-indigo-500'" class="inline-block mt-2 hover:underline">Visit Website →</a>
+      <p class="text-sm">Analytique de pointe pour le volleyball et les équipes de haute performance. Précision. Puissance. Perspicacité.</p>
+      <a href="https://spontaneous-swan-18b446.netlify.app/" target="_blank" :class="dark ? 'text-cyan-400' : 'text-indigo-500'" class="inline-block mt-2 hover:underline">Visiter le site →</a>
     </div>
   </div>
 </section>
 
 <section class="max-w-4xl mx-auto px-6 py-16">
-  <h2 :class="dark ? 'text-cyan-400 border-gray-700' : 'text-indigo-500 border-gray-300'" class="text-2xl font-bold border-b pb-2 mb-6 uppercase tracking-wide">Philosophy</h2>
-  <p class="text-base leading-relaxed">We invest in technologies that enhance human capability and institutional resilience. Our approach is founder-first, product-focused, and globally scalable. Spectrum AI operates with discretion and clarity — selecting ventures that align with long-term vision, technical excellence, and ethical innovation.</p>
+  <h2 :class="dark ? 'text-cyan-400 border-gray-700' : 'text-indigo-500 border-gray-300'" class="text-2xl font-bold border-b pb-2 mb-6 uppercase tracking-wide">Philosophie</h2>
+  <p class="text-base leading-relaxed">Nous investissons dans des technologies qui renforcent les capacités humaines et la résilience institutionnelle. Notre approche est centrée sur les fondateurs, axée sur les produits et conçue pour l’échelle mondiale. Spectrum AI agit avec discrétion et clarté — en sélectionnant des projets alignés avec une vision à long terme, une excellence technique et une innovation éthique.</p>
 </section>
 
 <section id="contact" class="max-w-4xl mx-auto px-6 py-16">
   <h2 :class="dark ? 'text-cyan-400 border-gray-700' : 'text-indigo-500 border-gray-300'" class="text-2xl font-bold border-b pb-2 mb-6 uppercase tracking-wide">Contact</h2>
-  <p class="mb-2">Email: technolog@spectrumai.pl</p>
+  <p class="mb-2">Email : technolog@spectrumai.pl</p>
 </section>
 
 <footer :class="dark ? 'text-gray-500 border-gray-700' : 'text-gray-600 border-gray-300'" class="text-center py-8 text-sm border-t">
-  &copy; 2025 Spectrum AI. All rights reserved.
+  &copy; 2025 Spectrum AI. Tous droits réservés.
 </footer>
 
 </body>

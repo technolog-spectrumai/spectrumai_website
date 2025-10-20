@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="{{ .Lang }}" x-data="{ dark: true, open: false }" :class="dark ? 'dark' : 'light'">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ i18n "site_title" }}</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>body { font-family: 'Exo 2', sans-serif; }</style>
+</head>
+<body :class="dark ? 'bg-black text-gray-300' : 'bg-gray-100 text-gray-900'" class="transition-colors duration-500">
+
+<!-- App Bar -->
+<nav x-data="{ open: false }" :class="dark ? 'bg-gray-900 border-gray-700' : 'bg-gray-100 border-gray-300'" class="sticky top-0 z-50 border-b px-6 py-4">
+  <div class="flex justify-between items-center">
+    <h1 :class="dark ? 'text-cyan-400' : 'text-indigo-500'" class="text-xl font-bold tracking-wide">{{ i18n "site_title" }}</h1>
+
+    <ul class="hidden md:flex space-x-6 text-sm font-medium">
+      <li><a href="#about" :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">{{ i18n "nav_about" }}</a></li>
+      <li><a href="#ventures" :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">{{ i18n "nav_ventures" }}</a></li>
+      <li><a href="#contact" :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">{{ i18n "nav_contact" }}</a></li>
+    </ul>
+
+    <div class="flex items-center space-x-4">
+      <button @click="dark = !dark" class="text-xl" :class="dark ? 'text-gray-300' : 'text-gray-700'">
+        <i :class="dark ? 'fas fa-sun' : 'fas fa-moon'"></i>
+      </button>
+      <button @click="open = !open" class="md:hidden text-xl" :class="dark ? 'text-gray-300' : 'text-gray-700'">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </div>
+
+  <div x-show="open" x-transition class="md:hidden mt-4 space-y-2">
+    <a href="#about" :class="dark ? 'block text-gray-300 hover:text-cyan-400' : 'block text-gray-700 hover:text-indigo-600'">{{ i18n "nav_about" }}</a>
+    <a href="#ventures" :class="dark ? 'block text-gray-300 hover:text-cyan-400' : 'block text-gray-700 hover:text-indigo-600'">{{ i18n "nav_ventures" }}</a>
+    <a href="#contact" :class="dark ? 'block text-gray-300 hover:text-cyan-400' : 'block text-gray-700 hover:text-indigo-600'">{{ i18n "nav_contact" }}</a>
+  </div>
+</nav>
+
+<header :class="dark ? 'bg-black' : 'bg-white'" class="text-center py-24 px-6">
+  <h1 :class="dark ? 'text-cyan-400' : 'text-indigo-500'" class="text-5xl font-bold">{{ i18n "site_title" }}</h1>
+  <p :class="dark ? 'text-gray-400' : 'text-gray-700'" class="mt-6 text-lg italic max-w-xl mx-auto">
+    {{ i18n "tagline" }}<br>{{ i18n "tagline_sub" }}
+  </p>
+</header>
+
+<section id="about" class="max-w-4xl mx-auto px-6 py-16">
+  <h2 :class="dark ? 'text-cyan-400 border-gray-700' : 'text-indigo-500 border-gray-300'" class="text-2xl font-bold border-b pb-2 mb-6 uppercase tracking-wide">{{ i18n "about_title" }}</h2>
+  <p class="text-base leading-relaxed">{{ i18n "about_text" }}</p>
+</section>
+
+<section id="ventures" class="max-w-5xl mx-auto px-6 py-16">
+  <h2 :class="dark ? 'text-cyan-400 border-gray-700' : 'text-indigo-500 border-gray-300'" class="text-2xl font-bold border-b pb-2 mb-6 uppercase tracking-wide">{{ i18n "ventures_title" }}</h2>
+
+  <div class="space-y-12">
+    <div :class="dark ? 'bg-gray-900 border-cyan-400' : 'bg-white border-indigo-300'" class="rounded-lg shadow-md p-6 border-l-4">
+      <h3 class="text-xl font-semibold mb-2">{{ i18n "ventures_basilisk_title" }}</h3>
+      <iframe src="https://basilisk-systems.netlify.app/" class="w-full h-96 mb-4" loading="lazy" scrolling="no"></iframe>
+      <p class="text-sm">{{ i18n "ventures_basilisk_text" }}</p>
+      <a href="https://basilisk-systems.netlify.app/" target="_blank" :class="dark ? 'text-cyan-400' : 'text-indigo-500'" class="inline-block mt-2 hover:underline">{{ i18n "visit_website" }}</a>
+    </div>
+
+    <div :class="dark ? 'bg-gray-900 border-cyan-400' : 'bg-white border-indigo-300'" class="rounded-lg shadow-md p-6 border-l-4">
+      <h3 class="text-xl font-semibold mb-2">{{ i18n "ventures_sport_title" }}</h3>
+      <iframe src="https://spontaneous-swan-18b446.netlify.app/" class="w-full h-96 mb-4" loading="lazy" scrolling="no"></iframe>
+      <p class="text-sm">{{ i18n "ventures_sport_text" }}</p>
+      <a href="https://spontaneous-swan-18b446.netlify.app/" target="_blank" :class="dark ? 'text-cyan-400' : 'text-indigo-500'" class="inline-block mt-2 hover:underline">{{ i18n "visit_website" }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-4xl mx-auto px-6 py-16">
+  <h2 :class="dark ? 'text-cyan-400 border-gray-700' : 'text-indigo-500 border-gray-300'" class="text-2xl font-bold border-b pb-2 mb-6 uppercase tracking-wide">{{ i18n "philosophy_title" }}</h2>
+  <p class="text-base leading-relaxed">{{ i18n "philosophy_text" }}</p>
+</section>
+
+<section id="contact" class="max-w-4xl mx-auto px-6 py-16">
+  <h2 :class="dark ? 'text-cyan-400 border-gray-700' : 'text-indigo-500 border-gray-300'" class="text-2xl font-bold border-b pb-2 mb-6 uppercase tracking-wide">{{ i18n "contact_title" }}</h2>
+  <p class="mb-2">{{ i18n "contact_email" }}</p>
+</section>
+
+<footer :class="dark ? 'text-gray-500 border-gray-700' : 'text-gray-600 border-gray-300'" class="text-center py-8 text-sm border-t">
+  &copy; 2025 {{ i18n "site_title" }}. {{ i18n "footer_rights" }}
+</footer>
+
+</body>
+</html>
+
