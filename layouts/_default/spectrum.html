@@ -88,18 +88,80 @@
   <h2 :class="dark ? 'text-cyan-400 border-gray-700' : 'text-indigo-500 border-gray-300'" class="text-2xl font-bold border-b pb-2 mb-6 uppercase tracking-wide">{{ i18n "ventures_title" }}</h2>
 
   <div class="space-y-12">
-    <div :class="dark ? 'bg-gray-900 border-cyan-400' : 'bg-white border-indigo-300'" class="rounded-lg shadow-md p-6 border-l-4">
-      <h3 class="text-xl font-semibold mb-2">{{ i18n "ventures_basilisk_title" }}</h3>
-      <iframe src="https://basilisk-website.pages.dev/{{ .Site.Language.Lang }}" class="w-full h-96 mb-4" loading="lazy" scrolling="no"></iframe>
-      <p class="text-sm">{{ i18n "ventures_basilisk_text" }}</p>
-      <a href="https://basilisk-website.pages.dev/{{ .Site.Language.Lang }}" target="_blank" :class="dark ? 'text-cyan-400' : 'text-indigo-500'" class="inline-block mt-2 hover:underline">{{ i18n "visit_website" }}</a>
+    <div
+      :class="dark ? 'bg-gray-900 border-cyan-400' : 'bg-white border-indigo-300'"
+      class="rounded-xl shadow-lg p-6 border-l-4 transition-colors duration-300"
+    >
+      <h3
+        class="text-2xl font-bold mb-4 tracking-tight"
+        :class="dark ? 'text-cyan-300' : 'text-indigo-700'"
+      >
+        {{ i18n "ventures_basilisk_title" }}
+      </h3>
+
+      <div class="aspect-w-16 aspect-h-9 mb-6 rounded overflow-hidden shadow-sm">
+        <iframe
+          src="https://basilisk-website.pages.dev/{{ .Site.Language.Lang }}"
+          class="w-full h-full border-none"
+          loading="lazy"
+          scrolling="no"
+        ></iframe>
+      </div>
+
+      <p
+        class="text-sm mb-3 leading-relaxed"
+        :class="dark ? 'text-gray-300' : 'text-gray-700'"
+      >
+        {{ i18n "ventures_basilisk_text" }}
+      </p>
+
+      <a
+        href="https://basilisk-website.pages.dev/{{ .Site.Language.Lang }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block text-sm font-medium hover:underline transition"
+        :class="dark ? 'text-cyan-400 hover:text-white' : 'text-indigo-500 hover:text-indigo-700'"
+      >
+        {{ i18n "visit_website" }}
+      </a>
     </div>
 
-    <div :class="dark ? 'bg-gray-900 border-cyan-400' : 'bg-white border-indigo-300'" class="rounded-lg shadow-md p-6 border-l-4">
-      <h3 class="text-xl font-semibold mb-2">{{ i18n "ventures_sport_title" }}</h3>
-      <iframe src="https://sport-spectrum.pages.dev/{{ .Site.Language.Lang }}" class="w-full h-96 mb-4" loading="lazy" scrolling="no"></iframe>
-      <p class="text-sm">{{ i18n "ventures_sport_text" }}</p>
-      <a href="https://sport-spectrum.pages.dev/{{ .Site.Language.Lang }}" target="_blank" :class="dark ? 'text-cyan-400' : 'text-indigo-500'" class="inline-block mt-2 hover:underline">{{ i18n "visit_website" }}</a>
+    <div
+      :class="dark ? 'bg-gray-900 border-cyan-400' : 'bg-white border-indigo-300'"
+      class="rounded-xl shadow-lg p-6 border-l-4 transition-colors duration-300"
+    >
+      <h3
+        class="text-2xl font-bold mb-4 tracking-tight"
+        :class="dark ? 'text-cyan-300' : 'text-indigo-700'"
+      >
+        {{ i18n "ventures_sport_title" }}
+      </h3>
+
+      <div class="aspect-w-16 aspect-h-9 mb-6 rounded overflow-hidden shadow-sm">
+        <iframe
+          src="https://sport-spectrum.pages.dev/{{ .Site.Language.Lang }}"
+          class="w-full h-full border-none"
+          loading="lazy"
+          scrolling="no"
+        ></iframe>
+      </div>
+
+      <p
+        class="text-sm mb-3 leading-relaxed"
+        :class="dark ? 'text-gray-300' : 'text-gray-700'"
+      >
+        {{ i18n "ventures_sport_text" }}
+      </p>
+
+      <a
+        href="https://sport-spectrum.pages.dev/{{ .Site.Language.Lang }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block text-sm font-medium hover:underline transition"
+        :class="dark ? 'text-cyan-400 hover:text-white' : 'text-indigo-500 hover:text-indigo-700'"
+      >
+        {{ i18n "visit_website" }}
+      </a>
     </div>
   </div>
 </section>
