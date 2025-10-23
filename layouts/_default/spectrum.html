@@ -88,7 +88,7 @@
           </a>
         </li>
         <li>
-          <a @click="dark = !dark" class="mx-3" :class="dark ? 'text-gray-300' : 'text-gray-700'">
+          <a @click="localStorage.setItem('darkMode', this.dark); location.reload()" class="mx-3" :class="dark ? 'text-gray-300' : 'text-gray-700'">
             <i :class="dark ? 'fas fa-sun' : 'fas fa-moon'"></i>
           </a>
         </li>
@@ -117,7 +117,7 @@
          :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">
         🇫🇷
       </a>
-      <a @click="dark = !dark" class="mx-2" :class="dark ? 'text-gray-300' : 'text-gray-700'">
+      <a @click="localStorage.setItem('darkMode', this.dark); location.reload()" class="mx-2" :class="dark ? 'text-gray-300' : 'text-gray-700'">
         <i :class="dark ? 'fas fa-sun' : 'fas fa-moon'"></i>
       </a>
   </div>
