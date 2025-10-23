@@ -10,7 +10,30 @@
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>body { font-family: 'Exo 2', sans-serif; }</style>
-
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    tsParticles.load("tsparticles", {
+      fullScreen: { enable: false },
+      background: { color: "#0f172a" },
+      particles: {
+        number: { value: 60 },
+        color: { value: "#ffffff" },
+        links: {
+          enable: true,
+          color: "#ffffff",
+          distance: 120,
+          opacity: 0.4
+        },
+        move: {
+          enable: true,
+          speed: 1.5
+        },
+        size: { value: 2 }
+      }
+    });
+  });
+</script>
 
 </head>
 <body :class="dark ? 'bg-black text-gray-300' : 'bg-gray-100 text-gray-900'" class="transition-colors duration-500">
@@ -86,6 +109,15 @@
   </p>
 
 </header>
+
+<section class="relative h-screen w-full overflow-hidden">
+  <div id="tsparticles" class="absolute inset-0 z-0"></div>
+  <div class="absolute inset-0 bg-black bg-opacity-50 z-10"></div>
+  <div class="relative z-20 flex flex-col items-center justify-center h-full text-center px-4">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">Connect the Dots</h1>
+    <p class="text-lg md:text-xl text-gray-300">Visualize your network in motion</p>
+  </div>
+</section>
 
 <section id="about" class="max-w-4xl mx-auto px-6 py-16">
   <h2 :class="dark ? 'text-cyan-400 border-gray-700' : 'text-indigo-500 border-gray-300'" class="text-2xl font-bold border-b pb-2 mb-6 uppercase tracking-wide">{{ i18n "about_title" }}</h2>
