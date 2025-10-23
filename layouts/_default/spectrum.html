@@ -10,6 +10,32 @@
   <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>body { font-family: 'Exo 2', sans-serif; }</style>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+  <script>
+    tsParticles.load("tsparticles", {
+      fullScreen: { enable: false },
+      background: { color: "#0f172a" },
+      particles: {
+        number: { value: 60 },
+        color: { value: "#ffffff" },
+        links: {
+          enable: true,
+          color: "#ffffff",
+          distance: 120,
+          opacity: 0.4
+        },
+        move: {
+          enable: true,
+          speed: 1.5
+        },
+        size: { value: 2 }
+      }
+    });
+  </script>
+
+
 </head>
 <body :class="dark ? 'bg-black text-gray-300' : 'bg-gray-100 text-gray-900'" class="transition-colors duration-500">
 
