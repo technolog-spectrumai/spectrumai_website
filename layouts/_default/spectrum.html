@@ -95,7 +95,7 @@
     </ul>
 
     <div class="flex items-center space-x-4">
-      <button @click="open = !open" class="md:hidden text-xl" :class="dark ? 'text-gray-300' : 'text-gray-700'">
+      <button @click="open = !open; document.documentElement.classList.toggle('dark'); tsParticles.load('tsparticles', dark ? particleConfigs.dark : particleConfigs.light)" class="md:hidden text-xl" :class="dark ? 'text-gray-300' : 'text-gray-700'">
         <i class="fas fa-bars"></i>
       </button>
     </div>
