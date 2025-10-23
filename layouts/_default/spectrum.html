@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="{{ .Lang }}" x-data="{ dark: localStorage.getItem('darkMode') === 'true', open: false }" :class="dark ? 'dark' : 'light'">
+<html lang="{{ .Lang }}" x-data="{ dark: localStorage.getItem('darkMode') === 'true', open: false }" :class="dark ? 'dark' : 'light'"
+x-init="document.documentElement.classList.toggle('dark', dark); localStorage.setItem('darkMode', true)"
+>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
