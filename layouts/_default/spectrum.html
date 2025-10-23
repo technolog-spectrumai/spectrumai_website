@@ -12,30 +12,6 @@
   <style>body { font-family: 'Exo 2', sans-serif; }</style>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
-  <script>
-    tsParticles.load("tsparticles", {
-      fullScreen: { enable: false },
-      background: { color: "#0f172a" },
-      particles: {
-        number: { value: 60 },
-        color: { value: "#ffffff" },
-        links: {
-          enable: true,
-          color: "#ffffff",
-          distance: 120,
-          opacity: 0.4
-        },
-        move: {
-          enable: true,
-          speed: 1.5
-        },
-        size: { value: 2 }
-      }
-    });
-  </script>
-
-
 </head>
 <body :class="dark ? 'bg-black text-gray-300' : 'bg-gray-100 text-gray-900'" class="transition-colors duration-500">
 
@@ -66,12 +42,14 @@
             🇫🇷
           </a>
         </li>
+        <li>
+          <button @click="dark = !dark" class="text-xl" :class="dark ? 'text-gray-300' : 'text-gray-700'">
+        <i :class="dark ? 'fas fa-sun' : 'fas fa-moon'"></i>
+          </button>
+        </li>
     </ul>
 
     <div class="flex items-center space-x-4">
-      <button @click="dark = !dark" class="text-xl" :class="dark ? 'text-gray-300' : 'text-gray-700'">
-        <i :class="dark ? 'fas fa-sun' : 'fas fa-moon'"></i>
-      </button>
       <button @click="open = !open" class="md:hidden text-xl" :class="dark ? 'text-gray-300' : 'text-gray-700'">
         <i class="fas fa-bars"></i>
       </button>
@@ -94,11 +72,14 @@
          :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">
         🇫🇷
       </a>
+    <button @click="dark = !dark" class="text-xl" :class="dark ? 'text-gray-300' : 'text-gray-700'">
+        <i :class="dark ? 'fas fa-sun' : 'fas fa-moon'"></i>
+      </button>
   </div>
 </nav>
 
 
-<header id="tsparticles" :class="dark ? 'bg-black' : 'bg-white'" class="text-center py-24 px-6">
+<header :class="dark ? 'bg-black' : 'bg-white'" class="text-center py-24 px-6">
   <h1 :class="dark ? 'text-cyan-400' : 'text-indigo-500'" class="text-5xl font-bold">{{ i18n "site_title" }}</h1>
   <p :class="dark ? 'text-gray-400' : 'text-gray-700'" class="mt-6 text-lg italic max-w-xl mx-auto">
     {{ i18n "tagline" }}<br>{{ i18n "tagline_sub" }}
