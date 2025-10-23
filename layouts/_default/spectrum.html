@@ -1,18 +1,5 @@
 <!DOCTYPE html>
-
-<html lang="{{ .Site.Language.Lang }}" x-data="{
-  dark: localStorage.getItem('darkMode') === 'true',
-  open: false,
-  toggleDark() {
-    this.dark = !this.dark;
-    localStorage.setItem('darkMode', this.dark);
-    document.documentElement.classList.toggle('dark', this.dark);
-    location.reload();
-  }
-}" x-init="document.documentElement.classList.toggle('dark', dark); localStorage.setItem('darkMode', true)" :class="dark ? 'dark' : 'light'>
-
-
-
+<html lang="{{ .Lang }}" x-data="{ dark: true, open: false }" :class="dark ? 'dark' : 'light'">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -108,7 +95,7 @@
     </ul>
 
     <div class="flex items-center space-x-4">
-      <button @click="toggleDark()" class="md:hidden text-xl" :class="dark ? 'text-gray-300' : 'text-gray-700'">
+      <button @click="open = !open; document.documentElement.classList.toggle('dark'); tsParticles.load('tsparticles', dark ? particleConfigs.dark : particleConfigs.light)" class="md:hidden text-xl" :class="dark ? 'text-gray-300' : 'text-gray-700'">
         <i class="fas fa-bars"></i>
       </button>
     </div>
@@ -130,7 +117,7 @@
          :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">
         🇫🇷
       </a>
-      <a @click="toggleDark()" class="mx-2" :class="dark ? 'text-gray-300' : 'text-gray-700'">
+      <a @click="dark = !dark" class="mx-2" :class="dark ? 'text-gray-300' : 'text-gray-700'">
         <i :class="dark ? 'fas fa-sun' : 'fas fa-moon'"></i>
       </a>
   </div>
@@ -262,4 +249,3 @@
 
 </body>
 </html>
-
