@@ -11,9 +11,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>body { font-family: 'Exo 2', sans-serif; }</style>
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    tsParticles.load("tsparticles", {
+  const particleConfigs = {
+    dark: {
       fullScreen: { enable: false },
       background: { color: "#0f172a" },
       particles: {
@@ -25,13 +26,34 @@
           distance: 120,
           opacity: 0.4
         },
-        move: {
-          enable: true,
-          speed: 1.5
-        },
+        move: { enable: true, speed: 1.5 },
         size: { value: 2 }
       }
-    });
+    },
+    light: {
+      fullScreen: { enable: false },
+      background: { color: "#f9fafb" },
+      particles: {
+        number: { value: 60 },
+        color: { value: "#0f172a" },
+        links: {
+          enable: true,
+          color: "#0f172a",
+          distance: 120,
+          opacity: 0.4
+        },
+        move: { enable: true, speed: 1.5 },
+        size: { value: 2 }
+      }
+    }
+  };
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const isDark = document.documentElement.classList.contains("dark");
+    const mode = isDark ? "dark" : "light";
+    tsParticles.load("tsparticles", particleConfigs[mode]);
   });
 </script>
 
