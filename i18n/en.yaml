@@ -4,34 +4,29 @@ nav_about: "About"
 nav_ventures: "Ventures"
 nav_contact: "Contact"
 
-tagline: "Engineering intelligence. Empowering possibility."
-tagline_sub: "Investing in autonomy, infrastructure, and insight."
+tagline: "Engineering intelligence for real‑world impact."
+tagline_sub: "Focused on autonomy, infrastructure, and operational insight."
 
-about_title: "About"
-about_text: "Spectrum AI is a private technology holding company with strategic investments in autonomous systems, decentralized infrastructure, and performance intelligence. We support founders building scalable, secure, and ethically grounded platforms that redefine how intelligence is deployed across industries."
+about_title: "Who We Are"
+about_text: "Spectrum AI is an AI engineering firm specializing in high‑impact intelligence systems for real‑world operations. We work with a limited number of partners, combining deep technical execution with a curated network of experts and operators. Our capabilities span autonomous systems, applied intelligence, and advanced decision‑making technologies — all engineered for practical deployment and measurable value."
 
-ventures_title: "Ventures"
+projects_title: "Selected Projects"
 
-ventures_basilisk_title: "Basilisk Systems"
-ventures_basilisk_text: "Autonomous drone transport built on vision, security, and relentless innovation—from defense-ready platforms to cloud-integrated navigation."
+project_1_title: "Autonomous Agricultural Robotics"
+project_1_desc: "A multi‑agent AI platform for next‑generation agriculture. Integrating robotics, sensor networks, and computer vision, it enables autonomous field operations, adaptive decision‑making, and real‑time environmental intelligence."
 
-ventures_sport_title: "Sport Spectrum"
-ventures_sport_text: "Cutting-edge analytics for high-performance teams. Precision. Power. Insight."
+project_2_title: "Sport Spectrum"
+project_2_desc: "AI‑driven decision intelligence for team sports, combining computer vision, performance analytics, and real‑time tactical insight."
+
+project_3_title: "Commercial Intelligence Agent"
+project_3_desc: "A real‑world‑aware AI system that blends language models with situational reasoning. It autonomously manages commercial interactions, evaluates opportunities, and adapts to dynamic environments."
 
 visit_website: "Visit Website →"
 
 philosophy_title: "Philosophy"
-philosophy_text: "We invest in technologies that enhance human capability and institutional resilience. Our approach is founder-first, product-focused, and globally scalable. Spectrum AI operates with discretion and clarity — selecting ventures that align with long-term vision, technical excellence, and ethical innovation."
+philosophy_text: "We believe intelligence should create tangible, operational value. Our work is grounded in disciplined engineering, selective partnerships, and a commitment to systems that perform in real environments. We focus on autonomy, infrastructure, and applied insight — building technologies that strengthen performance, enhance resilience, and deliver long‑term strategic advantage."
 
 contact_title: "Contact"
 contact_email: "Email: technolog@spectrumai.pl"
 
 footer_rights: "All rights reserved."
-
-ventures_ibricks_title: "iBricks: Tokenizing the Real World"
-ventures_ibricks_intro: "Empowering communities globally through blockchain, digital identity, and decentralized governance."
-visit_website: "Visit Website"
-
-
-
-

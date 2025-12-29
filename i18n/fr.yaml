@@ -4,32 +4,30 @@ nav_about: "À propos"
 nav_ventures: "Projets"
 nav_contact: "Contact"
 
-tagline: "Ingénierie de l’intelligence. Libération du potentiel."
-tagline_sub: "Investir dans l’autonomie, l’infrastructure et la connaissance."
+tagline: "Ingénierie de l’intelligence pour un impact concret."
+tagline_sub: "Expertise en autonomie, infrastructure et analyse opérationnelle."
 
-about_title: "À propos"
-about_text: "Spectrum AI est une société privée de technologie qui investit stratégiquement dans les systèmes autonomes, l’infrastructure décentralisée et l’intelligence de performance. Nous soutenons les fondateurs qui construisent des plateformes évolutives, sécurisées et éthiquement solides, redéfinissant la manière dont l’intelligence est déployée dans les industries."
+about_title: "Qui Nous Sommes"
+about_text: "Spectrum AI est une société d’ingénierie en intelligence artificielle spécialisée dans des systèmes à fort impact, conçus pour des environnements opérationnels réels. Nous collaborons avec un nombre restreint de partenaires, en alliant excellence technique et réseau ciblé d’experts et d’opérateurs. Nos domaines couvrent les systèmes autonomes, l’intelligence appliquée et les technologies avancées d’aide à la décision — toutes pensées pour un déploiement concret et une valeur mesurable."
 
-ventures_title: "Projets"
+projects_title: "Projets Sélectionnés"
 
-ventures_basilisk_title: "Basilisk Systems"
-ventures_basilisk_text: "Transport autonome par drone basé sur la vision, la sécurité et une innovation constante — des plateformes prêtes pour la défense à la navigation intégrée au cloud."
+project_1_title: "Robotique Agricole Autonome"
+project_1_desc: "Une plateforme d’IA multi‑agents pour l’agriculture de nouvelle génération. En combinant robotique, réseaux de capteurs et vision par ordinateur, elle permet des opérations autonomes, une prise de décision adaptative et une compréhension environnementale en temps réel."
 
-ventures_sport_title: "Sport Spectrum"
-ventures_sport_text: "Analytique de pointe pour les équipes de haute performance. Précision. Puissance. Perspicacité."
+project_2_title: "Sport Spectrum"
+project_2_desc: "Une plateforme d’intelligence décisionnelle pour les sports d’équipe, intégrant vision par ordinateur, analyse de performance et insights tactiques en temps réel."
+
+project_3_title: "Agent d’Intelligence Commerciale"
+project_3_desc: "Un système d’IA conscient du contexte réel, associant modèles linguistiques et raisonnement situationnel. Il gère de manière autonome les interactions commerciales, évalue les opportunités et s’adapte à des environnements dynamiques."
 
 visit_website: "Visiter le site →"
 
 philosophy_title: "Philosophie"
-philosophy_text: "Nous investissons dans des technologies qui renforcent les capacités humaines et la résilience institutionnelle. Notre approche est centrée sur les fondateurs, axée sur les produits et conçue pour l’échelle mondiale. Spectrum AI agit avec discrétion et clarté — en sélectionnant des projets alignés avec une vision à long terme, une excellence technique et une innovation éthique."
+philosophy_text: "Nous considérons que l’intelligence doit générer une valeur opérationnelle tangible. Notre approche repose sur une ingénierie rigoureuse, des partenariats sélectifs et un engagement envers des systèmes performants dans des conditions réelles. Nous nous concentrons sur l’autonomie, l’infrastructure et l’intelligence appliquée — afin de développer des technologies qui renforcent la performance, améliorent la résilience et créent un avantage stratégique durable."
 
 contact_title: "Contact"
 contact_email: "Email : technolog@spectrumai.pl"
 
 footer_rights: "Tous droits réservés."
-
-ventures_ibricks_title: "iBricks : Tokeniser le monde réel"
-ventures_ibricks_intro: "Autonomiser les communautés à l’échelle mondiale grâce à la blockchain, l’identité numérique et la gouvernance décentralisée."
-visit_website: "Visiter le site"
-
 
