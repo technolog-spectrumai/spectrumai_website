@@ -79,11 +79,25 @@
 
 </head>
 <body :class="dark ? 'bg-black text-gray-300' : 'bg-gray-100 text-gray-900'" class="transition-colors duration-500">
-
 <!-- App Bar -->
 <nav x-data="{ open: false }" :class="dark ? 'bg-gray-900 border-gray-700' : 'bg-gray-100 border-gray-300'" class="sticky top-0 z-50 border-b px-6 py-4">
   <div class="flex justify-between items-center">
-    <h1 :class="dark ? 'text-cyan-400' : 'text-indigo-700'" class="text-xl font-bold tracking-wide">{{ i18n "site_title" }}</h1>
+	<div class="flex items-center space-x-3">
+	  <img 
+	    :src="dark 
+	      ? 'https://i.ibb.co/k28tRzBm/logo-spectrum-white.png' 
+	      : 'https://i.ibb.co/sdJxFJZm/logo-spectrum-black.png'"
+	    class="h-6 w-auto md:h-7"
+	    alt="Spectrum Logo"
+	  />
+
+	  <h1 
+	    :class="dark ? 'text-cyan-400' : 'text-indigo-700'" 
+	    class="text-xl font-bold tracking-wide"
+	  >
+	    {{ i18n "site_title" }}
+	  </h1>
+	</div>
 
     <ul class="hidden md:flex space-x-6 text-sm font-medium">
       <li><a href="#about" :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">{{ i18n "nav_about" }}</a></li>
