@@ -1,6 +1,19 @@
 <!DOCTYPE html>
-<html lang="{{ .Lang }}" x-data="{ dark: true, open: false }" :class="dark ? 'dark' : 'light'"
-x-init="document.documentElement.classList.toggle('dark', dark); localStorage.setItem('darkMode', true)"
+<html lang="{{ .Lang }}"
+      x-data="{
+          dark: localStorage.getItem('darkMode')
+                 ? JSON.parse(localStorage.getItem('darkMode'))
+                 : false,
+          open: false
+      }"
+      :class="dark ? 'dark' : 'light'"
+      x-init="
+          document.documentElement.classList.toggle('dark', dark);
+      "
+      x-effect="
+          localStorage.setItem('darkMode', JSON.stringify(dark));
+          document.documentElement.classList.toggle('dark', dark);
+      "
 >
 <head>
   <meta charset="UTF-8" />
