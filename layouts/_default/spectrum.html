@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ .Lang }}"
       x-data="{
-          dark: localStorage.getItem('darkMode')
-                 ? JSON.parse(localStorage.getItem('darkMode'))
-                 : false,
+          dark: (() => {
+              const saved = localStorage.getItem('darkMode');
+              if (saved !== null) {
+                  return JSON.parse(saved);
+              }
+              const hour = new Date().getHours();
+              return hour >= 19 || hour < 7; // dark at night
+          })(),
           open: false
       }"
       :class="dark ? 'dark' : 'light'"
