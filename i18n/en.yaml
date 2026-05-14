@@ -1,34 +1,68 @@
 site_title: "Spectrum AI"
+meta_description: "Spectrum AI engineers operational AI systems for autonomy, infrastructure, decision intelligence, and real-world deployment."
+brand_subtitle: "Operational Intelligence"
 
 nav_about: "About"
 nav_ventures: "Ventures"
 nav_contact: "Contact"
 
-tagline: "Engineering intelligence for real‑world impact."
+hero_eyebrow: "AI engineering studio"
+hero_title: "Intelligence that leaves the lab and enters operations."
+hero_text: "Spectrum AI designs applied intelligence systems for teams that need autonomy, real-time insight, and decision infrastructure that can survive contact with the real world."
+hero_cta_primary: "Explore ventures"
+hero_cta_secondary: "How we think"
+
+signal_1_title: "Autonomy"
+signal_1_desc: "Agents, robotics, perception, and mission logic for physical environments."
+signal_2_title: "Decision Systems"
+signal_2_desc: "Operational software that turns noisy signals into executable choices."
+signal_3_title: "Deployment"
+signal_3_desc: "Engineering discipline for integrations, telemetry, monitoring, and iteration."
+
+tagline: "Engineering intelligence for real-world impact."
 tagline_sub: "Focused on autonomy, infrastructure, and operational insight."
 
+about_kicker: "Company"
 about_title: "Who We Are"
-about_text: "Spectrum AI is an AI engineering firm specializing in high‑impact intelligence systems for real‑world operations. We work with a limited number of partners, combining deep technical execution with a curated network of experts and operators. Our capabilities span autonomous systems, applied intelligence, and advanced decision‑making technologies — all engineered for practical deployment and measurable value."
+about_text: "Spectrum AI is an AI engineering company building high-impact intelligence systems for real operational environments. We combine technical execution, product thinking, and a selective network of domain experts to move from prototype to field-ready capability."
 
-projects_title: "Selected Projects"
+cap_1_title: "Applied AI Architecture"
+cap_1_desc: "We design the system around the mission: data flows, interfaces, constraints, feedback loops, and measurable outcomes."
+cap_2_title: "Human + Machine Operations"
+cap_2_desc: "Our products support operators with intelligence that is explainable, monitorable, and useful under pressure."
+cap_3_title: "Field-Ready Engineering"
+cap_3_desc: "We focus on reliability, observability, security, and practical deployment rather than isolated model demos."
+
+projects_title: "Selected Ventures"
+ventures_kicker: "Portfolio"
+ventures_intro: "A focused set of ventures around autonomy, performance intelligence, and commercial AI agents."
 
 project_1_title: "Autonomous Agricultural Robotics"
-project_1_desc: "A multi‑agent AI platform for next‑generation agriculture. Integrating robotics, sensor networks, and computer vision, it enables autonomous field operations, adaptive decision‑making, and real‑time environmental intelligence."
-
+project_1_desc: "Multi-agent AI for next-generation agriculture: robotics, sensor networks, computer vision, autonomous field operations, adaptive decisions, and real-time environmental intelligence."
 project_2_title: "Sport Spectrum"
-project_2_desc: "AI‑driven decision intelligence for team sports, combining computer vision, performance analytics, and real‑time tactical insight."
-
+project_2_desc: "Decision intelligence for team sports: computer vision, performance analytics, player context, and tactical insight designed for coaches and analysts."
 project_3_title: "Commercial Intelligence Agent"
-project_3_desc: "A real‑world‑aware AI system that blends language models with situational reasoning. It autonomously manages commercial interactions, evaluates opportunities, and adapts to dynamic environments."
+project_3_desc: "A situational AI agent that manages commercial interactions, evaluates opportunities, reasons over context, and adapts to dynamic markets."
+visit_website: "Discuss this →"
 
-visit_website: "Visit Website →"
+systems_kicker: "Engineering Stack"
+systems_title: "From signal to decision to action."
+systems_text: "Spectrum systems are built as operational loops: sense the environment, structure the information, recommend or execute action, monitor outcomes, and improve continuously."
+system_1_title: "Perception & Data Fusion"
+system_1_desc: "Computer vision, sensor data, documents, APIs, and human inputs combined into coherent operational context."
+system_2_title: "Agentic Workflows"
+system_2_desc: "LLM agents, rules, tools, memory, and human approval paths arranged into safe production workflows."
+system_3_title: "Monitoring & Control"
+system_3_desc: "Telemetry, alerts, audit trails, and feedback channels that make intelligence accountable after deployment."
 
+philosophy_kicker: "Operating Principle"
 philosophy_title: "Philosophy"
-philosophy_text: "We believe intelligence should create tangible, operational value. Our work is grounded in disciplined engineering, selective partnerships, and a commitment to systems that perform in real environments. We focus on autonomy, infrastructure, and applied insight — building technologies that strengthen performance, enhance resilience, and deliver long‑term strategic advantage."
+philosophy_text: "We believe intelligence should create tangible operational value. Our work is grounded in disciplined engineering, selective partnerships, and systems that perform in real environments."
+vision_text: "Our vision is a world where intelligent systems operate as integrated components of critical workflows — dependable, adaptive, observable, and aligned with human goals."
 
-vision_text: "Spectrum AI envisions a world where intelligent systems operate seamlessly within real environments — not as isolated models, but as integrated components of critical operations. Our goal is to build intelligence that strengthens resilience, enhances performance, and expands human capability. We focus on autonomy, robust infrastructure, and applied insight because these domains create lasting strategic advantage. Our vision is to engineer intelligence that is dependable, adaptive, and deeply aligned with real‑world systems."
-
+contact_kicker: "Build with us"
 contact_title: "Contact"
+contact_text: "Reach out to discuss autonomy, decision intelligence, AI agents, or operational infrastructure."
 contact_email: "Email: technology@spectrumai.pl"
-
+footer_tagline: "Autonomy · Infrastructure · Operational Insight"
 footer_rights: "All rights reserved."

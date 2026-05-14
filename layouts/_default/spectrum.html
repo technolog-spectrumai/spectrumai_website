@@ -1,232 +1,400 @@
 <!DOCTYPE html>
-<html lang="{{ .Lang }}"
-      x-data="{
-          dark: (() => {
-              const saved = localStorage.getItem('darkMode');
-              if (saved !== null) {
-                  return JSON.parse(saved);
-              }
-              const hour = new Date().getHours();
-              return hour >= 19 || hour < 7; // dark at night
-          })(),
-          open: false
-      }"
-      :class="dark ? 'dark' : 'light'"
-      x-init="
-          document.documentElement.classList.toggle('dark', dark);
-      "
-      x-effect="
-          localStorage.setItem('darkMode', JSON.stringify(dark));
-          document.documentElement.classList.toggle('dark', dark);
-      "
->
+<html lang="{{ .Lang }}">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="{{ i18n "meta_description" }}" />
   <title>{{ i18n "site_title" }}</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>body { font-family: 'Exo 2', sans-serif; }</style>
-<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
-
-<script>
-  const particleConfigs = {
-    dark: {
-      fullScreen: { enable: false },
-      background: { color: "#0f172a" },
-      particles: {
-        number: { value: 60 },
-        color: { value: "#ffffff" },
-        links: {
-          enable: true,
-          color: "#ffffff",
-          distance: 120,
-          opacity: 0.4
-        },
-        move: { enable: true, speed: 1.5 },
-        size: { value: 2 }
-      }
-    },
-    light: {
-      fullScreen: { enable: false },
-      background: { color: "#f9fafb" },
-      particles: {
-        number: { value: 60 },
-        color: { value: "#6366f1" },
-        links: {
-          enable: true,
-          color: "#6366f1",
-          distance: 120,
-          opacity: 0.4
-        },
-        move: { enable: true, speed: 1.5 },
-        size: { value: 2 }
-      }
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #050816;
+      --bg-2: #091024;
+      --ink: #f7fbff;
+      --muted: #9fb0c8;
+      --soft: rgba(255,255,255,.075);
+      --soft-2: rgba(255,255,255,.12);
+      --line: rgba(255,255,255,.14);
+      --line-2: rgba(129, 230, 217, .28);
+      --cyan: #55f4ff;
+      --violet: #8b5cf6;
+      --blue: #3b82f6;
+      --lime: #a3ff12;
+      --hot: #ff4fd8;
+      --card: rgba(9,16,36,.72);
+      --card-solid: #0a1228;
+      --shadow: 0 32px 90px rgba(0,0,0,.45);
+      --radius: 30px;
+      --header: rgba(5,8,22,.72);
     }
-  }
-</script>
+    :root[data-theme="light"] {
+      color-scheme: light;
+      --bg: #f8fbff;
+      --bg-2: #edf4ff;
+      --ink: #081225;
+      --muted: #54627a;
+      --soft: rgba(8,18,37,.055);
+      --soft-2: rgba(8,18,37,.09);
+      --line: rgba(8,18,37,.12);
+      --line-2: rgba(59,130,246,.20);
+      --cyan: #0891b2;
+      --violet: #6d28d9;
+      --blue: #2563eb;
+      --lime: #3f8f00;
+      --hot: #be185d;
+      --card: rgba(255,255,255,.78);
+      --card-solid: #ffffff;
+      --shadow: 0 28px 80px rgba(12,30,70,.14);
+      --header: rgba(255,255,255,.78);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 6%, color-mix(in srgb, var(--cyan) 24%, transparent), transparent 28rem),
+        radial-gradient(circle at 88% 14%, color-mix(in srgb, var(--violet) 30%, transparent), transparent 30rem),
+        radial-gradient(circle at 50% 100%, color-mix(in srgb, var(--blue) 18%, transparent), transparent 34rem),
+        linear-gradient(180deg, var(--bg), var(--bg-2) 58%, var(--bg));
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    p { color: var(--muted); line-height: 1.75; }
+    .page { position: relative; overflow: hidden; }
+    .page::before {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -2;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 56px 56px;
+      opacity: .16;
+      mask-image: radial-gradient(circle at 50% 18%, black, transparent 72%);
+    }
+    .page::after {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1;
+      background: repeating-linear-gradient(180deg, transparent 0, transparent 7px, rgba(255,255,255,.022) 8px);
+      opacity: .28;
+      mix-blend-mode: overlay;
+    }
+    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .nav-shell {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(22px);
+      background: var(--header);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .brand { display: inline-flex; align-items: center; gap: 14px; font-weight: 950; letter-spacing: -.03em; }
+    .brand-mark {
+      width: 48px; height: 48px; border-radius: 18px; display: grid; place-items: center;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--cyan) 20%, transparent), color-mix(in srgb, var(--violet) 24%, transparent));
+      border: 1px solid var(--line-2); box-shadow: 0 0 35px color-mix(in srgb, var(--cyan) 20%, transparent);
+      position: relative; overflow: hidden;
+    }
+    .brand-mark::after { content:""; position:absolute; inset:-1px; background: linear-gradient(100deg, transparent 15%, rgba(255,255,255,.36), transparent 55%); transform: translateX(-150%); animation: shine 6s infinite; }
+    .brand-mark svg { width: 31px; height: 31px; position: relative; z-index: 1; }
+    .brand-name { display: grid; line-height: 1; }
+    .brand-name strong { font-size: 1.05rem; text-transform: uppercase; letter-spacing: .12em; }
+    .brand-name span { color: var(--muted); font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; margin-top: 5px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; color: var(--muted); font-weight: 760; font-size: .93rem; }
+    .nav-links a { transition: color .2s ease; }
+    .nav-links a:hover { color: var(--cyan); }
+    .lang { display:flex; gap: 8px; padding-left: 6px; }
+    .lang a { opacity: .78; }
+    .lang a:hover { opacity: 1; }
+    .actions { display: flex; align-items: center; gap: 10px; }
+    .theme-toggle, .menu-toggle {
+      width: 46px; height: 46px; border-radius: 999px; border: 1px solid var(--line);
+      background: var(--soft); color: var(--ink); cursor: pointer; display: grid; place-items: center;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .theme-toggle:hover, .menu-toggle:hover { transform: translateY(-2px); border-color: var(--line-2); }
+    .menu-toggle { display: none; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; min-height: 46px; border-radius: 999px;
+      padding: 0 20px; font-weight: 900; border: 1px solid transparent; cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      color: #03111f;
+      background: linear-gradient(135deg, var(--cyan), color-mix(in srgb, var(--violet) 60%, white));
+      box-shadow: 0 18px 44px color-mix(in srgb, var(--cyan) 22%, transparent);
+    }
+    .btn-secondary { color: var(--ink); border-color: var(--line); background: var(--soft); }
+    .mobile-panel { display: none; border-top: 1px solid var(--line); padding: 16px 0 20px; }
+    .mobile-panel.open { display: block; }
+    .mobile-links { display: grid; gap: 12px; color: var(--muted); font-weight: 800; }
+    .mobile-lang { display: flex; gap: 12px; margin-top: 14px; }
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const isDark = document.documentElement.classList.contains("dark");
-    const mode = isDark ? "dark" : "light";
-    tsParticles.load("tsparticles", particleConfigs[mode]);
-  });
-</script>
+    .hero { padding: 86px 0 64px; min-height: calc(100vh - 78px); display: grid; align-items: center; }
+    .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 54px; align-items: center; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px; padding: 8px 13px; border-radius: 999px;
+      border: 1px solid var(--line-2); color: var(--cyan); background: color-mix(in srgb, var(--cyan) 10%, transparent);
+      font-weight: 950; text-transform: uppercase; font-size: .78rem; letter-spacing: .15em; margin-bottom: 22px;
+    }
+    .eyebrow::before { content:""; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 18px var(--lime); }
+    h1 { font-size: clamp(3.2rem, 7vw, 7.2rem); line-height: .88; letter-spacing: -.075em; margin-bottom: 26px; }
+    .gradient-text { background: linear-gradient(120deg, var(--ink), var(--cyan) 42%, var(--violet) 82%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .lead { max-width: 680px; font-size: clamp(1.06rem, 2vw, 1.28rem); margin-bottom: 34px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 34px; }
+    .signal-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 710px; }
+    .signal { padding: 16px; border-radius: 22px; background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .signal strong { display:block; color: var(--ink); margin-bottom: 4px; font-size: .95rem; }
+    .signal span { color: var(--muted); font-size: .83rem; line-height: 1.45; }
 
+    .orbital-card {
+      min-height: 590px; border-radius: 44px; background:
+        radial-gradient(circle at 50% 36%, color-mix(in srgb, var(--cyan) 22%, transparent), transparent 15rem),
+        radial-gradient(circle at 75% 72%, color-mix(in srgb, var(--hot) 18%, transparent), transparent 18rem),
+        linear-gradient(180deg, var(--card), color-mix(in srgb, var(--card-solid) 88%, transparent));
+      border: 1px solid var(--line); box-shadow: var(--shadow); position: relative; overflow: hidden;
+      display: grid; place-items: center; padding: 42px;
+    }
+    .orbital-card::before { content:""; position:absolute; inset: 18px; border: 1px solid var(--line-2); border-radius: 34px; opacity:.65; }
+    .orbital-card::after { content:""; position:absolute; inset:0; background: conic-gradient(from 120deg at 50% 50%, transparent, color-mix(in srgb, var(--cyan) 18%, transparent), transparent 35%, color-mix(in srgb, var(--violet) 15%, transparent), transparent 70%); animation: rotate 18s linear infinite; opacity:.6; }
+    .spectrum-core { position: relative; z-index: 2; width: min(390px, 88%); aspect-ratio: 1; display: grid; place-items: center; }
+    .rings, .rings::before, .rings::after { position: absolute; border-radius: 50%; border: 1px solid var(--line-2); }
+    .rings { inset: 0; animation: rotate 24s linear infinite reverse; }
+    .rings::before { content:""; inset: 42px; transform: rotate(28deg) scaleY(.62); }
+    .rings::after { content:""; inset: 84px; transform: rotate(-38deg) scaleY(.58); }
+    .core-logo {
+      width: 190px; height: 190px; border-radius: 42px; display: grid; place-items: center;
+      background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
+      border: 1px solid var(--line-2); box-shadow: inset 0 0 40px rgba(255,255,255,.05), 0 0 70px color-mix(in srgb, var(--cyan) 22%, transparent);
+      backdrop-filter: blur(8px);
+    }
+    .core-logo svg { width: 118px; height: 118px; }
+    .node { position:absolute; width: 12px; height:12px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 26px var(--cyan); z-index: 3; }
+    .n1 { left: 13%; top: 32%; } .n2 { right: 17%; top: 61%; background: var(--violet); box-shadow: 0 0 26px var(--violet); } .n3 { left: 47%; bottom: 7%; background: var(--lime); box-shadow: 0 0 26px var(--lime); }
+    .telemetry {
+      position: absolute; left: 26px; right: 26px; bottom: 28px; z-index: 4; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+    }
+    .telemetry span { padding: 10px 12px; border-radius: 14px; background: rgba(0,0,0,.18); border: 1px solid var(--line); color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .72rem; }
+
+    section { padding: 88px 0; }
+    .section-head { max-width: 770px; margin-bottom: 42px; }
+    .section-head.center { margin-left:auto; margin-right:auto; text-align:center; }
+    h2 { font-size: clamp(2.1rem, 5vw, 4.7rem); line-height: .98; letter-spacing: -.06em; margin-bottom: 18px; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { padding: 28px; border-radius: var(--radius); background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); position: relative; overflow: hidden; }
+    .card::before { content:""; position:absolute; right:-60px; top:-60px; width: 160px; height:160px; border-radius:50%; background: radial-gradient(circle, color-mix(in srgb, var(--cyan) 17%, transparent), transparent 70%); }
+    .card h3 { position:relative; color: var(--ink); font-size: 1.2rem; margin: 18px 0 10px; letter-spacing: -.02em; }
+    .card p { position:relative; }
+    .icon { width: 54px; height: 54px; border-radius: 18px; display: grid; place-items: center; background: color-mix(in srgb, var(--cyan) 12%, transparent); border: 1px solid var(--line-2); position:relative; }
+    .icon svg { width: 29px; height: 29px; stroke: var(--cyan); }
+    .split { display: grid; grid-template-columns: .92fr 1.08fr; gap: 48px; align-items:center; }
+    .panel { padding: clamp(30px, 5vw, 54px); border-radius: 42px; background: linear-gradient(135deg, var(--card), color-mix(in srgb, var(--card-solid) 86%, transparent)); border: 1px solid var(--line); box-shadow: var(--shadow); position: relative; overflow: hidden; }
+    .panel::after { content:""; position:absolute; width: 360px; height: 360px; right: -120px; top:-120px; border-radius:50%; background: radial-gradient(circle, color-mix(in srgb, var(--violet) 24%, transparent), transparent 65%); }
+    .panel > * { position: relative; z-index: 1; }
+    .feature-list { display:grid; gap: 14px; }
+    .feature { display:grid; grid-template-columns: 46px 1fr; gap: 16px; padding: 20px; border-radius: 24px; background: var(--card); border: 1px solid var(--line); }
+    .feature-num { width:46px; height:46px; border-radius: 50%; display:grid; place-items:center; background: linear-gradient(135deg, var(--cyan), var(--violet)); color:#06101d; font-weight: 950; }
+    .feature h3 { margin-bottom: 6px; font-size: 1.08rem; }
+    .venture-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .venture-card { min-height: 310px; padding: 26px; border-radius: 32px; background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); display:flex; flex-direction:column; justify-content:space-between; overflow:hidden; position:relative; }
+    .venture-card::before { content:""; position:absolute; inset:auto -40px -70px auto; width:170px; height:170px; border-radius:50%; background: radial-gradient(circle, color-mix(in srgb, var(--hot) 18%, transparent), transparent 70%); }
+    .kicker { display:inline-flex; align-self:flex-start; padding: 7px 11px; border-radius:999px; border: 1px solid var(--line-2); color:var(--cyan); background: color-mix(in srgb, var(--cyan) 9%, transparent); font-weight:950; font-size:.73rem; letter-spacing:.1em; text-transform:uppercase; }
+    .venture-card h3 { margin-top: 20px; margin-bottom: 12px; font-size: 1.45rem; letter-spacing: -.04em; }
+    .philosophy-band { padding: 0 0 88px; }
+    .philosophy-box { border-radius: 44px; padding: clamp(34px, 6vw, 70px); background:
+      radial-gradient(circle at 85% 12%, color-mix(in srgb, var(--cyan) 25%, transparent), transparent 22rem),
+      linear-gradient(135deg, color-mix(in srgb, var(--card-solid) 85%, transparent), var(--card));
+      border: 1px solid var(--line); box-shadow: var(--shadow); display:grid; grid-template-columns: .9fr 1.1fr; gap: 42px; align-items:center; }
+    .matrix { min-height: 320px; border-radius: 30px; border: 1px solid var(--line); background: rgba(0,0,0,.12); position:relative; overflow:hidden; }
+    .matrix::before { content:""; position:absolute; inset:0; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 34px 34px; opacity:.45; }
+    .matrix::after { content:"SPECTRUM\A SIGNAL\A AUTONOMY\A DECISION\A INFRASTRUCTURE"; white-space: pre; position:absolute; left: 28px; top: 28px; color: var(--cyan); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .86rem; line-height: 2.2; opacity:.7; letter-spacing:.14em; }
+    .cta { padding-bottom: 110px; }
+    .cta-box { text-align:center; border-radius: 44px; padding: clamp(36px, 7vw, 76px); background: linear-gradient(135deg, color-mix(in srgb, var(--cyan) 16%, transparent), color-mix(in srgb, var(--violet) 18%, transparent)); border: 1px solid var(--line-2); box-shadow: var(--shadow); }
+    .cta-box p { max-width: 720px; margin: 0 auto 28px; font-size: 1.08rem; }
+    footer { padding: 34px 0; border-top: 1px solid var(--line); color: var(--muted); }
+    .footer-inner { display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+    @keyframes rotate { to { transform: rotate(360deg); } }
+    @keyframes shine { 0%, 62% { transform: translateX(-150%); } 74%, 100% { transform: translateX(150%); } }
+    @media (max-width: 980px) {
+      .hero-grid, .split, .philosophy-box { grid-template-columns: 1fr; }
+      .orbital-card { min-height: 510px; }
+      .cards, .venture-grid { grid-template-columns: 1fr; }
+      .nav-links, .actions .btn { display: none; }
+      .menu-toggle { display: grid; }
+    }
+    @media (max-width: 640px) {
+      .container { width: min(100% - 28px, 1180px); }
+      .hero { padding-top: 56px; }
+      .signal-strip, .telemetry { grid-template-columns: 1fr; }
+      .telemetry { position: relative; left:auto; right:auto; bottom:auto; margin-top: 28px; width:100%; }
+      .orbital-card { min-height: auto; padding: 28px; }
+      .spectrum-core { width: 280px; max-width: 100%; }
+      .core-logo { width: 145px; height: 145px; border-radius: 32px; }
+      .core-logo svg { width: 90px; height: 90px; }
+      section { padding: 62px 0; }
+    }
+  </style>
 </head>
-<body :class="dark ? 'bg-black text-gray-300' : 'bg-gray-100 text-gray-900'" class="transition-colors duration-500">
-<!-- App Bar -->
-<nav x-data="{ open: false }" :class="dark ? 'bg-gray-900 border-gray-700' : 'bg-gray-100 border-gray-300'" class="sticky top-0 z-50 border-b px-6 py-4">
-  <div class="flex justify-between items-center">
-	<div class="flex items-center space-x-3">
-	  <img 
-	    :src="dark 
-	      ? 'https://i.ibb.co/k28tRzBm/logo-spectrum-white.png' 
-	      : 'https://i.ibb.co/sdJxFJZm/logo-spectrum-black.png'"
-	    class="h-6 w-auto md:h-7"
-	    alt="Spectrum Logo"
-	  />
-
-	  <h1 
-	    :class="dark ? 'text-cyan-400' : 'text-indigo-700'" 
-	    class="text-xl font-bold tracking-wide"
-	  >
-	    {{ i18n "site_title" }}
-	  </h1>
-	</div>
-
-    <ul class="hidden md:flex space-x-6 text-sm font-medium">
-      <li><a href="#about" :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">{{ i18n "nav_about" }}</a></li>
-      <li><a href="#ventures" :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">{{ i18n "nav_ventures" }}</a></li>
-        <li><a href="#contact" :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">{{ i18n "nav_contact" }}</a></li>
-        <li>
-          <a href="/en/"
-             :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">
-            🇬🇧
-          </a>
-        </li>
-        <li>
-          <a href="/pl/"
-             :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">
-            🇵🇱
-          </a>
-        </li>
-        <li>
-          <a href="/fr/"
-             :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">
-            🇫🇷
-          </a>
-        </li>
-        <li>
-          <a @click="localStorage.setItem('darkMode', !dark); location.reload()" class="mx-3" :class="dark ? 'text-gray-300' : 'text-gray-700'">
-            <i :class="dark ? 'fas fa-sun' : 'fas fa-moon'"></i>
-          </a>
-        </li>
-    </ul>
-
-    <div class="flex items-center space-x-4">
-      <button @click="open = !open; document.documentElement.classList.toggle('dark'); tsParticles.load('tsparticles', dark ? particleConfigs.dark : particleConfigs.light)" class="md:hidden text-xl" :class="dark ? 'text-gray-300' : 'text-gray-700'">
-        <i class="fas fa-bars"></i>
-      </button>
+<body>
+<div class="page">
+  <header class="nav-shell">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="{{ i18n "site_title" }} home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none">
+            <path d="M32 6 55 18v17c0 12.5-8.5 20.5-23 23C17.5 55.5 9 47.5 9 35V18L32 6Z" stroke="currentColor" stroke-width="3"/>
+            <path d="M18 34c6-13 22-13 28 0-6 8-22 8-28 0Z" fill="currentColor" opacity=".18"/>
+            <circle cx="32" cy="34" r="6" fill="currentColor"/>
+            <path d="M21 21h22M24 48l8-8 8 8" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-name"><strong>{{ i18n "site_title" }}</strong><span>{{ i18n "brand_subtitle" }}</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#about">{{ i18n "nav_about" }}</a>
+        <a href="#ventures">{{ i18n "nav_ventures" }}</a>
+        <a href="#philosophy">{{ i18n "philosophy_title" }}</a>
+        <a href="#contact">{{ i18n "nav_contact" }}</a>
+        <span class="lang"><a href="/en/">🇬🇧</a><a href="/pl/">🇵🇱</a><a href="/fr/">🇫🇷</a></span>
+      </nav>
+      <div class="actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" type="button">◐</button>
+        <a class="btn btn-primary" href="#contact">{{ i18n "nav_contact" }}</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" type="button">☰</button>
+      </div>
     </div>
-  </div>
+    <div class="container mobile-panel" id="mobilePanel">
+      <div class="mobile-links">
+        <a href="#about">{{ i18n "nav_about" }}</a>
+        <a href="#ventures">{{ i18n "nav_ventures" }}</a>
+        <a href="#philosophy">{{ i18n "philosophy_title" }}</a>
+        <a href="#contact">{{ i18n "nav_contact" }}</a>
+      </div>
+      <div class="mobile-lang"><a href="/en/">🇬🇧</a><a href="/pl/">🇵🇱</a><a href="/fr/">🇫🇷</a></div>
+    </div>
+  </header>
 
-  <div x-show="open" x-transition class="md:hidden mt-4 space-y-2">
-    <a href="#about" :class="dark ? 'block text-gray-300 hover:text-cyan-400' : 'block text-gray-700 hover:text-indigo-600'">{{ i18n "nav_about" }}</a>
-    <a href="#projects" :class="dark ? 'block text-gray-300 hover:text-cyan-400' : 'block text-gray-700 hover:text-indigo-600'">{{ i18n "nav_ventures" }}</a>
-    <a href="#contact" :class="dark ? 'block text-gray-300 hover:text-cyan-400' : 'block text-gray-700 hover:text-indigo-600'">{{ i18n "nav_contact" }}</a>
-      <a href="/en/"
-         :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">
-        🇬🇧
-      </a>
-      <a href="/pl/"
-         :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">
-        🇵🇱
-      </a>
-      <a href="/fr/"
-         :class="dark ? 'text-gray-300 hover:text-cyan-400' : 'text-gray-700 hover:text-indigo-600'">
-        🇫🇷
-      </a>
-      <a @click="localStorage.setItem('darkMode', !dark); location.reload()" class="mx-2" :class="dark ? 'text-gray-300' : 'text-gray-700'">
-        <i :class="dark ? 'fas fa-sun' : 'fas fa-moon'"></i>
-      </a>
-  </div>
-</nav>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">{{ i18n "hero_eyebrow" }}</div>
+          <h1><span class="gradient-text">{{ i18n "hero_title" }}</span></h1>
+          <p class="lead">{{ i18n "hero_text" }}</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#ventures">{{ i18n "hero_cta_primary" }}</a>
+            <a class="btn btn-secondary" href="#about">{{ i18n "hero_cta_secondary" }}</a>
+          </div>
+          <div class="signal-strip" aria-label="Highlights">
+            <div class="signal"><strong>{{ i18n "signal_1_title" }}</strong><span>{{ i18n "signal_1_desc" }}</span></div>
+            <div class="signal"><strong>{{ i18n "signal_2_title" }}</strong><span>{{ i18n "signal_2_desc" }}</span></div>
+            <div class="signal"><strong>{{ i18n "signal_3_title" }}</strong><span>{{ i18n "signal_3_desc" }}</span></div>
+          </div>
+        </div>
+        <div class="orbital-card" aria-label="Spectrum AI intelligence core visual">
+          <div class="spectrum-core">
+            <div class="rings"></div>
+            <span class="node n1"></span><span class="node n2"></span><span class="node n3"></span>
+            <div class="core-logo">
+              <svg viewBox="0 0 128 128" fill="none" aria-hidden="true">
+                <path d="M64 10 111 35v32c0 25-17 42-47 51-30-9-47-26-47-51V35L64 10Z" stroke="currentColor" stroke-width="5"/>
+                <path d="M34 66c15-28 45-28 60 0-15 20-45 20-60 0Z" fill="currentColor" opacity=".16"/>
+                <circle cx="64" cy="66" r="13" fill="currentColor"/>
+                <path d="M43 39h42M47 94l17-16 17 16" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="telemetry" aria-hidden="true"><span>MODEL: OPERATIONAL</span><span>LATENCY: LOW</span><span>STACK: HUMAN + AI</span></div>
+        </div>
+      </div>
+    </section>
 
+    <section id="about">
+      <div class="container split">
+        <div class="section-head">
+          <div class="eyebrow">{{ i18n "about_kicker" }}</div>
+          <h2>{{ i18n "about_title" }}</h2>
+          <p>{{ i18n "about_text" }}</p>
+        </div>
+        <div class="feature-list">
+          <div class="feature"><div class="feature-num">01</div><div><h3>{{ i18n "cap_1_title" }}</h3><p>{{ i18n "cap_1_desc" }}</p></div></div>
+          <div class="feature"><div class="feature-num">02</div><div><h3>{{ i18n "cap_2_title" }}</h3><p>{{ i18n "cap_2_desc" }}</p></div></div>
+          <div class="feature"><div class="feature-num">03</div><div><h3>{{ i18n "cap_3_title" }}</h3><p>{{ i18n "cap_3_desc" }}</p></div></div>
+        </div>
+      </div>
+    </section>
 
-<section class="relative h-screen w-full overflow-hidden">
-  <div id="tsparticles" class="absolute inset-0 z-0"></div>
-  <div class="absolute inset-0 bg-black bg-opacity-10 z-10"></div>
-  <div class="relative z-20 flex flex-col items-center justify-center h-full text-center px-4">
-    <h1 :class="dark ? 'text-cyan-400' : 'text-indigo-700'" class="text-5xl font-bold">{{ i18n "site_title" }}</h1>
-  <p :class="dark ? 'text-gray-400' : 'text-gray-700'" class="mt-6 text-lg italic max-w-xl mx-auto">
-    {{ i18n "tagline" }}<br>{{ i18n "tagline_sub" }}
-  </p>
-  </div>
-</section>
+    <section id="ventures">
+      <div class="container">
+        <div class="section-head center">
+          <div class="eyebrow">{{ i18n "ventures_kicker" }}</div>
+          <h2>{{ i18n "projects_title" }}</h2>
+          <p>{{ i18n "ventures_intro" }}</p>
+        </div>
+        <div class="venture-grid">
+          <article class="venture-card"><div><span class="kicker">Autonomy</span><h3>{{ i18n "project_1_title" }}</h3><p>{{ i18n "project_1_desc" }}</p></div><a href="#contact">{{ i18n "visit_website" }}</a></article>
+          <article class="venture-card"><div><span class="kicker">Performance</span><h3>{{ i18n "project_2_title" }}</h3><p>{{ i18n "project_2_desc" }}</p></div><a href="#contact">{{ i18n "visit_website" }}</a></article>
+          <article class="venture-card"><div><span class="kicker">Agents</span><h3>{{ i18n "project_3_title" }}</h3><p>{{ i18n "project_3_desc" }}</p></div><a href="#contact">{{ i18n "visit_website" }}</a></article>
+        </div>
+      </div>
+    </section>
 
-<!-- About -->
-<section id="about" class="max-w-4xl mx-auto px-6 py-16">
-  <h2 class="text-2xl font-bold border-b pb-2 mb-6 uppercase tracking-wide"
-      :class="dark ? 'text-cyan-400 border-gray-700' : 'text-indigo-600 border-gray-300'">
-    {{ i18n "about_title" }}
-  </h2>
-  <p class="text-base leading-relaxed">{{ i18n "about_text" }}</p>
-</section>
+    <section id="systems">
+      <div class="container">
+        <div class="panel">
+          <div class="section-head">
+            <div class="eyebrow">{{ i18n "systems_kicker" }}</div>
+            <h2>{{ i18n "systems_title" }}</h2>
+            <p>{{ i18n "systems_text" }}</p>
+          </div>
+          <div class="cards">
+            <article class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="7"/></svg></div><h3>{{ i18n "system_1_title" }}</h3><p>{{ i18n "system_1_desc" }}</p></article>
+            <article class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/><path d="M8 4v16M16 4v16"/></svg></div><h3>{{ i18n "system_2_title" }}</h3><p>{{ i18n "system_2_desc" }}</p></article>
+            <article class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 7v5l4 2"/></svg></div><h3>{{ i18n "system_3_title" }}</h3><p>{{ i18n "system_3_desc" }}</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<!-- Projects -->
-<section id="projects" class="max-w-4xl mx-auto px-6 py-16">
-  <h2 class="text-2xl font-bold border-b pb-2 mb-6 uppercase tracking-wide"
-      :class="dark ? 'text-cyan-400 border-gray-700' : 'text-indigo-600 border-gray-300'">
-    {{ i18n "projects_title" }}
-  </h2>
+    <section id="philosophy" class="philosophy-band">
+      <div class="container philosophy-box">
+        <div class="matrix" aria-hidden="true"></div>
+        <div>
+          <div class="eyebrow">{{ i18n "philosophy_kicker" }}</div>
+          <h2>{{ i18n "philosophy_title" }}</h2>
+          <p>{{ i18n "philosophy_text" }}</p>
+          <p style="margin-top:16px">{{ i18n "vision_text" }}</p>
+        </div>
+      </div>
+    </section>
 
-  <ul class="space-y-8">
-    <li>
-      <h3 class="font-semibold text-lg" :class="dark ? 'text-cyan-300' : 'text-indigo-700'">
-        {{ i18n "project_1_title" }}
-      </h3>
-      <p class="mt-1">{{ i18n "project_1_desc" }}</p>
-    </li>
+    <section id="contact" class="cta">
+      <div class="container cta-box">
+        <div class="eyebrow">{{ i18n "contact_kicker" }}</div>
+        <h2>{{ i18n "contact_title" }}</h2>
+        <p>{{ i18n "contact_text" }}</p>
+        <a class="btn btn-primary" href="mailto:technology@spectrumai.pl">technology@spectrumai.pl</a>
+      </div>
+    </section>
+  </main>
 
-    <li>
-      <h3 class="font-semibold text-lg" :class="dark ? 'text-cyan-300' : 'text-indigo-700'">
-        {{ i18n "project_2_title" }}
-      </h3>
-      <p class="mt-1">{{ i18n "project_2_desc" }}</p>
-    </li>
-
-    <li>
-      <h3 class="font-semibold text-lg" :class="dark ? 'text-cyan-300' : 'text-indigo-700'">
-        {{ i18n "project_3_title" }}
-      </h3>
-      <p class="mt-1">{{ i18n "project_3_desc" }}</p>
-    </li>
-  </ul>
-</section>
-
-<!-- Philosophy -->
-<section id="philosophy" class="max-w-4xl mx-auto px-6 py-16">
-  <h2 class="text-2xl font-bold border-b pb-2 mb-6 uppercase tracking-wide"
-      :class="dark ? 'text-cyan-400 border-gray-700' : 'text-indigo-600 border-gray-300'">
-    {{ i18n "philosophy_title" }}
-  </h2>
-  <p class="text-base leading-relaxed py-2">{{ i18n "philosophy_text" }}</p>
-  <p class="text-base leading-relaxed py-2">{{ i18n "vision_text" }}</p>
-</section>
-
-<section id="contact" class="max-w-4xl mx-auto px-6 py-16">
-  <h2 :class="dark ? 'text-cyan-400 border-gray-700' : 'text-indigo-500 border-gray-300'" class="text-2xl font-bold border-b pb-2 mb-6 uppercase tracking-wide">{{ i18n "contact_title" }}</h2>
-  <p class="mb-2">{{ i18n "contact_email" }}</p>
-</section>
-
-<footer :class="dark ? 'text-gray-500 border-gray-700' : 'text-gray-600 border-gray-300'" class="text-center py-8 text-sm border-t">
-  &copy; 2025 {{ i18n "site_title" }}. {{ i18n "footer_rights" }}
-</footer>
-
+  <footer>
+    <div class="container footer-inner"><span>© 2026 {{ i18n "site_title" }}. {{ i18n "footer_rights" }}</span><span>{{ i18n "footer_tagline" }}</span></div>
+  </footer>
+</div>
+<script>
+  const root = document.documentElement;
+  const saved = localStorage.getItem('spectrum-theme');
+  if (saved) root.dataset.theme = saved;
+  const themeToggle = document.getElementById('themeToggle');
+  themeToggle.addEventListener('click', () => {
+    const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+    root.dataset.theme = next;
+    localStorage.setItem('spectrum-theme', next);
+  });
+  const menuToggle = document.getElementById('menuToggle');
+  const mobilePanel = document.getElementById('mobilePanel');
+  menuToggle.addEventListener('click', () => mobilePanel.classList.toggle('open'));
+  mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobilePanel.classList.remove('open')));
+</script>
 </body>
 </html>

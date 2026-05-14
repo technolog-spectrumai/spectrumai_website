@@ -1,34 +1,68 @@
 site_title: "Spectrum AI"
+meta_description: "Spectrum AI conçoit des systèmes d'IA opérationnelle pour l'autonomie, l'infrastructure, l'intelligence décisionnelle et le déploiement réel."
+brand_subtitle: "Intelligence Opérationnelle"
 
 nav_about: "À propos"
 nav_ventures: "Projets"
 nav_contact: "Contact"
 
+hero_eyebrow: "Studio d'ingénierie IA"
+hero_title: "Une intelligence qui quitte le laboratoire et entre en opération."
+hero_text: "Spectrum AI conçoit des systèmes d'intelligence appliquée pour les équipes qui ont besoin d'autonomie, d'analyse en temps réel et d'infrastructure décisionnelle adaptée au monde réel."
+hero_cta_primary: "Explorer les projets"
+hero_cta_secondary: "Notre approche"
+
+signal_1_title: "Autonomie"
+signal_1_desc: "Agents, robotique, perception et logique de mission pour environnements physiques."
+signal_2_title: "Systèmes décisionnels"
+signal_2_desc: "Logiciels opérationnels transformant les signaux bruités en décisions exécutables."
+signal_3_title: "Déploiement"
+signal_3_desc: "Intégrations, télémétrie, supervision et itération avec discipline d'ingénierie."
+
 tagline: "Ingénierie de l’intelligence pour un impact concret."
 tagline_sub: "Expertise en autonomie, infrastructure et analyse opérationnelle."
 
-about_title: "Qui Nous Sommes"
-about_text: "Spectrum AI est une société d’ingénierie en intelligence artificielle spécialisée dans des systèmes à fort impact, conçus pour des environnements opérationnels réels. Nous collaborons avec un nombre restreint de partenaires, en alliant excellence technique et réseau ciblé d’experts et d’opérateurs. Nos domaines couvrent les systèmes autonomes, l’intelligence appliquée et les technologies avancées d’aide à la décision — toutes pensées pour un déploiement concret et une valeur mesurable."
+about_kicker: "Société"
+about_title: "Qui nous sommes"
+about_text: "Spectrum AI est une société d'ingénierie en intelligence artificielle qui construit des systèmes à fort impact pour des environnements opérationnels réels. Nous combinons exécution technique, vision produit et réseau sélectif d'experts afin de passer du prototype à une capacité prête pour le terrain."
 
-projects_title: "Projets Sélectionnés"
+cap_1_title: "Architecture IA appliquée"
+cap_1_desc: "Nous concevons le système autour de la mission : flux de données, interfaces, contraintes, boucles de retour et résultats mesurables."
+cap_2_title: "Opérations humain + machine"
+cap_2_desc: "Nos produits soutiennent les opérateurs avec une intelligence explicable, observable et utile sous pression."
+cap_3_title: "Ingénierie prête au terrain"
+cap_3_desc: "Nous privilégions la fiabilité, l'observabilité, la sécurité et le déploiement pratique plutôt que des démonstrations de modèles isolées."
+
+projects_title: "Projets sélectionnés"
+ventures_kicker: "Portfolio"
+ventures_intro: "Un ensemble ciblé de projets autour de l'autonomie, de l'intelligence de performance et des agents commerciaux IA."
 
 project_1_title: "Robotique Agricole Autonome"
-project_1_desc: "Une plateforme d’IA multi‑agents pour l’agriculture de nouvelle génération. En combinant robotique, réseaux de capteurs et vision par ordinateur, elle permet des opérations autonomes, une prise de décision adaptative et une compréhension environnementale en temps réel."
-
+project_1_desc: "IA multi-agents pour l'agriculture de nouvelle génération : robotique, réseaux de capteurs, vision par ordinateur, opérations autonomes, décisions adaptatives et intelligence environnementale en temps réel."
 project_2_title: "Sport Spectrum"
-project_2_desc: "Une plateforme d’intelligence décisionnelle pour les sports d’équipe, intégrant vision par ordinateur, analyse de performance et insights tactiques en temps réel."
+project_2_desc: "Intelligence décisionnelle pour les sports d'équipe : vision par ordinateur, analyse de performance, contexte joueur et insights tactiques pour entraîneurs et analystes."
+project_3_title: "Agent d'Intelligence Commerciale"
+project_3_desc: "Un agent IA situationnel qui gère les interactions commerciales, évalue les opportunités, raisonne sur le contexte et s'adapte aux marchés dynamiques."
+visit_website: "En discuter →"
 
-project_3_title: "Agent d’Intelligence Commerciale"
-project_3_desc: "Un système d’IA conscient du contexte réel, associant modèles linguistiques et raisonnement situationnel. Il gère de manière autonome les interactions commerciales, évalue les opportunités et s’adapte à des environnements dynamiques."
+systems_kicker: "Stack d'ingénierie"
+systems_title: "Du signal à la décision puis à l'action."
+systems_text: "Les systèmes Spectrum sont construits comme des boucles opérationnelles : percevoir l'environnement, structurer l'information, recommander ou exécuter l'action, surveiller les résultats et s'améliorer en continu."
+system_1_title: "Perception et fusion de données"
+system_1_desc: "Vision par ordinateur, capteurs, documents, API et apports humains réunis en contexte opérationnel cohérent."
+system_2_title: "Workflows agentiques"
+system_2_desc: "Agents LLM, règles, outils, mémoire et validation humaine organisés en workflows de production sûrs."
+system_3_title: "Supervision et contrôle"
+system_3_desc: "Télémétrie, alertes, journaux d'audit et retours qui rendent l'intelligence responsable après déploiement."
 
-visit_website: "Visiter le site →"
-
+philosophy_kicker: "Principe opérationnel"
 philosophy_title: "Philosophie"
-philosophy_text: "Nous considérons que l’intelligence doit générer une valeur opérationnelle tangible. Notre approche repose sur une ingénierie rigoureuse, des partenariats sélectifs et un engagement envers des systèmes performants dans des conditions réelles. Nous nous concentrons sur l’autonomie, l’infrastructure et l’intelligence appliquée — afin de développer des technologies qui renforcent la performance, améliorent la résilience et créent un avantage stratégique durable."
-vision_text: "Spectrum AI imagine un monde où les systèmes intelligents opèrent de manière fluide dans des environnements réels — non pas comme des modèles isolés, mais comme des composants intégrés aux opérations critiques. Notre objectif est de créer une intelligence qui renforce la résilience, améliore la performance et élargit les capacités humaines. Nous nous concentrons sur l’autonomie, l’infrastructure robuste et l’intelligence appliquée, car ces domaines constituent une source durable d’avantage stratégique. Notre vision est d’ingénier une intelligence fiable, adaptative et profondément alignée sur les systèmes du monde réel."
+philosophy_text: "Nous pensons que l'intelligence doit créer une valeur opérationnelle tangible. Notre travail repose sur une ingénierie disciplinée, des partenariats sélectifs et des systèmes performants dans des environnements réels."
+vision_text: "Notre vision est celle d'un monde où les systèmes intelligents sont des composants intégrés de workflows critiques — fiables, adaptatifs, observables et alignés sur les objectifs humains."
 
+contact_kicker: "Construire avec nous"
 contact_title: "Contact"
+contact_text: "Contactez-nous pour discuter d'autonomie, d'intelligence décisionnelle, d'agents IA ou d'infrastructure opérationnelle."
 contact_email: "Email : technology@spectrumai.pl"
-
+footer_tagline: "Autonomie · Infrastructure · Analyse opérationnelle"
 footer_rights: "Tous droits réservés."
-
