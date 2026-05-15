@@ -244,23 +244,15 @@
             <path
               d="M32 7 54 19.5v25L32 57 10 44.5v-25L32 7Z"
               stroke="currentColor"
-              stroke-width="3.6"
+              stroke-width="3.8"
               stroke-linejoin="round"
             />
-            <circle cx="32" cy="32" r="7.2" fill="currentColor" />
-            <path
-              d="M18 32c7-10 21-10 28 0-7 10-21 10-28 0Z"
+            <circle
+              cx="32"
+              cy="32"
+              r="10.5"
               stroke="currentColor"
-              stroke-width="3.2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M32 13v8M32 43v8M13 32h8M43 32h8"
-              stroke="currentColor"
-              stroke-width="3"
-              stroke-linecap="round"
-              opacity=".72"
+              stroke-width="3.8"
             />
           </svg>
         </span>
@@ -313,6 +305,12 @@
             <span class="node n1"></span><span class="node n2"></span><span class="node n3"></span>
             <div class="core-logo">
               <svg viewBox="0 0 128 128" fill="none" aria-hidden="true">
+                <defs>
+                  <clipPath id="agentHexClip">
+                    <path d="M64 11 110 37v54L64 117 18 91V37L64 11Z" />
+                  </clipPath>
+                </defs>
+
                 <path
                   d="M64 11 110 37v54L64 117 18 91V37L64 11Z"
                   stroke="currentColor"
@@ -320,28 +318,41 @@
                   stroke-linejoin="round"
                 />
 
-                <path
-                  d="M32 64c16-22 48-22 64 0-16 22-48 22-64 0Z"
-                  stroke="currentColor"
-                  stroke-width="5.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
+                <g clip-path="url(#agentHexClip)">
+                  <circle cx="64" cy="64" r="17" stroke="currentColor" stroke-width="5.5" />
+                  <circle cx="64" cy="64" r="5.5" fill="currentColor" />
 
-                <circle cx="64" cy="64" r="13" fill="currentColor" />
+                  <circle cx="36" cy="44" r="7" fill="currentColor" />
+                  <circle cx="92" cy="44" r="7" fill="currentColor" />
+                  <circle cx="32" cy="84" r="7" fill="currentColor" />
+                  <circle cx="96" cy="84" r="7" fill="currentColor" />
+                  <circle cx="64" cy="105" r="6.5" fill="currentColor" opacity=".9" />
 
-                <path
-                  d="M64 24v18M64 86v18M24 64h18M86 64h18"
-                  stroke="currentColor"
-                  stroke-width="5.5"
-                  stroke-linecap="round"
-                  opacity=".7"
-                />
+                  <path
+                    d="M50 54 36 44M78 54 92 44M49 74 32 84M79 74 96 84M64 81v24"
+                    stroke="currentColor"
+                    stroke-width="5.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    opacity=".78"
+                  />
 
-                <circle cx="64" cy="24" r="4" fill="currentColor" opacity=".9" />
-                <circle cx="64" cy="104" r="4" fill="currentColor" opacity=".9" />
-                <circle cx="24" cy="64" r="4" fill="currentColor" opacity=".9" />
-                <circle cx="104" cy="64" r="4" fill="currentColor" opacity=".9" />
+                  <path
+                    d="M64 20v27M33 44 18 37M95 44 110 37M32 84 18 91M96 84 110 91"
+                    stroke="currentColor"
+                    stroke-width="5.5"
+                    stroke-linecap="round"
+                    opacity=".52"
+                  />
+
+                  <path
+                    d="M49 32c8-7 22-7 30 0"
+                    stroke="currentColor"
+                    stroke-width="5.5"
+                    stroke-linecap="round"
+                    opacity=".72"
+                  />
+                </g>
               </svg>
             </div>
           </div>
